@@ -9,19 +9,12 @@ int main(int argc, char const *argv[])
         scanf("%d",&num[i]);
     }
 
-    for( int i=0; i<n; i++)
-    { 
-            if( i<n-i-1){
-                int x = num[n-i-1];
-                num[n-i-1] = num[i];
-                num[i] = x;
-            }
-            else
-                break;
+    for( int i=n-1; i>-1; i--)
+    {
+        if( i == 0 )
+            printf("%d\n",num[i]);
+        else
+            printf("%d ",num[i]);
     }
-
-    for(int i=0; i<n; i++)
-        printf("%d ",num[i]);
-    printf("\b\n");
     return 0;
 }
