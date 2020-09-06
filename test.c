@@ -1,68 +1,33 @@
 #include <stdio.h>
 
-int inNum(int *a, int len, int x);
-
 int main(int argc, char const *argv[])
 {
-    int x, y;
-    int num1[20], num2[20];
-    scanf("%d", &x);
-    for (int i = 0; i < x; i++)
-        scanf("%d", &num1[i]);
-    scanf("%d", &y);
-    for (int i = 0; i < y; i++)
-        scanf("%d", &num2[i]);
-
-    int res[20], cnt = 0;
+    int n;
+    scanf("%d", &n);
+    int num[10][10];
     int i, j;
-    //检查
-    for (j = 0; j < y; j++)
+    //输入
+    for (i = 0; i < n; i++)
     {
-        for (i = 0; i < x; i++)
+        for (j = 0; j < n; j++)
         {
-            if (num1[i] == num2[j])
-                break;
+            scanf("%d", &num[i][j]);
         }
-        if (i == x)
+    }
+
+    //计算
+    int sum = 0;
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
         {
-            if (inNum(res, cnt, num1[i]))
+            if (i + j == n - 1 || i == n - 1 || j == n - 1)
                 break;
             else
-            {
-                res[cnt] = num1[i];
-                cnt++;
-            }
+                sum += num[i][j];
         }
     }
 
-    for (i = 0; i < x; i++)
-    {
-        for (j = 0; j < y; j++)
-        {
-            if (num2[j] == num1[i])
-                break;
-        }
-        if (j == y)
-        {
-            if (!inNum(res, cnt, num2[j]))
-            {
-                res[cnt] = num1[i];
-                cnt++;
-            }
-        }
-    }
-    for (i = 0; i < cnt; i++)
-        printf("%d ", res[i]);
+    printf("%d\n", sum);
     return 0;
-}
-
-int inNum(int *a, int len, int x)
-{
-    int res = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if (*(a + i) == x)
-            res = 1;
-    }
-    return res;
 }
