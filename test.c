@@ -1,33 +1,37 @@
 #include <stdio.h>
-
 int main(int argc, char const *argv[])
 {
-    int n;
-    scanf("%d", &n);
-    int num[10][10];
-    int i, j;
-    //输入
-    for (i = 0; i < n; i++)
+    int m, n;
+    scanf("%d %d", &m, &n);
+    int num[6][6];
+    int mid[6];
+    for (int i = 0; i < n; i++)
     {
-        for (j = 0; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
-            scanf("%d", &num[i][j]);
+            scanf("%d", num[i][j]);
         }
     }
 
-    //计算
-    int sum = 0;
-    for (i = 0; i < n; i++)
+    //存储提到前面的值
+    int l = 0;
+    for (int i = 0; i < n; i++)
     {
-        for (j = 0; j < n; j++)
+        for (int j = 0, k = 0; j < n; j++)
         {
-            if (i + j == n - 1 || i == n - 1 || j == n - 1)
-                break;
+            if (j < m)
+            {
+                mid[k++] = num[i][j];
+            }
             else
-                sum += num[i][j];
+            {
+                num[i][j] = num[i][l++];
+            }
         }
     }
 
-    printf("%d\n", sum);
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            printf("%d", num[i][j]);
     return 0;
 }
