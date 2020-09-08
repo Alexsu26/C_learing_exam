@@ -1,37 +1,31 @@
 #include <stdio.h>
+#include <string.h>
+
 int main(int argc, char const *argv[])
 {
-    int m, n;
-    scanf("%d %d", &m, &n);
-    int num[6][6];
-    int mid[6];
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            scanf("%d", num[i][j]);
-        }
-    }
-
-    //存储提到前面的值
-    int l = 0;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0, k = 0; j < n; j++)
-        {
-            if (j < m)
-            {
-                mid[k++] = num[i][j];
-            }
-            else
-            {
-                num[i][j] = num[i][l++];
-            }
-        }
-    }
-
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            printf("%d", num[i][j]);
+    char num[5];
+    gets(num);
+    char x;
+    scanf("%c",&x);
+    int flag = 0;
+    int i;
+    printf("strlen(num)=%d\n",strlen(num));
+    printf("num[4]=%c\n",num[4]);
+    printf("x=%c\n",x);
+    int y=12;
+    printf("&x=%p ' '=%p\n",&x,&y);
+    printf("%d\n",num[4]==x);
+    // // for (i = strlen(num) - 1; i >= 0; i--)
+    // // {
+    // //     if (num[i] == x)
+    // //     {
+    // //         flag = 1;
+    // //         break;
+    // //     }
+    // // }
+    // if (flag)
+    //     printf("index = %d\n", i);
+    // else
+    //     printf("Not Found\n");
     return 0;
 }
