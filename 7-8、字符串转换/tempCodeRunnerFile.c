@@ -1,0 +1,2 @@
+if( strchr(num,'-'))
+        //         continue;
