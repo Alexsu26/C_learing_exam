@@ -1,2 +1,2 @@
-if( strchr(num,'-'))
-        //         continue;
+for(int j=0; j<strlen(num);j++)
+      
