@@ -1,7 +1,22 @@
 #include <stdio.h>
+#include <string.h>
+struct price
+{
+    double bp;
+    char *name;
+}book;
+
+
 int main(int argc, char const *argv[])
 {
-    int n;
-    printf("%d",n);
+    char x;
+    char *name;
+    int i=0;
+    do
+    {
+        x = getchar();
+        name[i++] = x;
+    } while (x != '\n');
+    printf("%s",name);
     return 0;
 }
