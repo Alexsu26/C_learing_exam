@@ -3,35 +3,44 @@ int main(int argc, char const *argv[])
 {
     int n;
     scanf("%d", &n);
-    int num[10];
+    int num[n][n];
     for (int i = 0; i < n; i++)
-        scanf("%d", &num[i]);
+        for (int j = 0; j < n; j++)
+            scanf("%d", &num[i][j]);
 
-    int cnt = 0;
-    int i;
-    while (cnt < n)
+    
+    for (int i = 0; i < n; i++)
     {
-        int max = num[0];
-        int flag = 0;
-        for (i = 1; i < n; i++)
-        {
-            if (num[i] > max)
+        int max=0,line=0,flag=1;
+        for (int j = 0; j < n; j++)
+            if (max <= num[i][j])
             {
-                max = num[i];
-                flag = i;
+                max = num[i][j];
+                // line = j;
+            }
+        
+        for(int l=0;l<n;l++)
+        {
+            if(max == num[i][l])
+            {
+                line = l;
+                for (int k = 0; k < n; k++)
+                    if (max > num[k][line])
+                    {
+                        flag = 0;
+                        break;
+                    }
+                if (flag)
+                {
+                    printf("%d %d\n", i, line);
+                    break;
+                }
+                if (i == (n - 1) && !flag)
+                    printf("NONE\n");
             }
         }
-        if (cnt == n - 1)
-        {
-            printf("%d\n", max);
-            cnt++;
-        }
-        else
-        {
-            printf("%d ", max);
-            num[flag] = -999;
-            cnt++;
-        }
+                
+            
     }
     return 0;
 }
