@@ -3,35 +3,57 @@
 struct price
 {
     double bp;
-    char *name;
-}book;
+    char name[35];
+}book[10];
 
 
 int main(int argc, char const *argv[])
 {
     double max = -9999999.0;
     double min = 99999999.0;
-    char* maxname;
-    char* minname;
-    int N = 3;
+    int maxflag = 0;
+    int minflag = 0;
+    int N;
     scanf("%d",&N);
-    while (N--)
+    getchar();
+    for(int i=0; i<N; i++)
     {
-        scanf("%[^\n]",book.name);
-        // scanf("%lf",&book.bp);
-        if( book.bp > max )
+        // scanf("\n");
+        gets(book[i].name);
+
+        scanf("%lf",&book[i].bp);
+        getchar();
+
+        if (book[i].bp > max)
         {
-            max = book.bp;
-            maxname = book.name;
+            maxflag = i;
+            max = book[i].bp;
         }
-        if (book.bp < min )
+        if (book[i].bp < min)
         {
-            min = book.bp;
-            minname = book.name;
+            minflag = i;
+            min = book[i].bp;
         }
+
     }
-    printf("%.2f, %s\n",max,maxname);
-    printf("%.2f, %s\n",min,minname);
+
+    // int maxflag = 0;
+    // int minflag = 0;
+    // for( int i=0; i<N; i++)
+    // {
+    //     if (book[i].bp > max)
+    //     {
+    //         maxflag = i;
+    //         max = book[i].bp;
+    //     }
+    //     if (book[i].bp < min)
+    //     {
+    //         minflag = i;
+    //         min = book[i].bp;
+    //     }
+    // }
+    printf("%.2f, %s\n",book[maxflag].bp,book[maxflag].name);
+    printf("%.2f, %s\n",book[minflag].bp,book[minflag].name);
     
 
     return 0;
