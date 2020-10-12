@@ -1,20 +1,35 @@
 #include <stdio.h>
 
+#define maxn 100000
+
 int main(int argc, char const *argv[])
 {
+    int num[maxn];
+    num[1] = 1;
+    num[2] = 1;
+    int i = 3;
+    int sum;
+    do
+    {
+        sum = num[i-2] + num[i-1];
+        i++;
+        if(sum>10000)
+            break;
+        else
+            num[i] = sum;
+    }while( sum<10000 );
     int N;
     scanf("%d",&N);
-    int old = 2;
-    int new = 0;
-    int cnt = 0;
-    while( old+new != N)
+    for(i=0;i<maxn;i++)
     {
-        if( cnt % 3 == 0)
+        if(N <= num[i])
         {
-            old++;
-            new--;
+            printf("%d\n",i);
+            break;
         }
-        
     }
+            
+    
+     
     return 0;
 }

@@ -1,0 +1,1 @@
+sum = num[i-2] + num[i-1];
